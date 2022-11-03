@@ -5,9 +5,10 @@ from math import isclose
 # Task A: see comment in function `test_vector_index_access`
 # Task B: see comment in function `test_3d_vector_subtraction`
 
+
 class Vector:
     def __init__(self, coordinates: List[float]) -> None:
-        self._coordinates = coordinates
+        self._coordinates = [i for i in coordinates]
 
     def __getitem__(self, i: int) -> float:
         return self._coordinates[i]
@@ -32,7 +33,7 @@ def test_vector_index_access() -> None:
         vector[index] = 42.0
         assert vector[index] == 42.0
 
-        # Task A: make this test pass by ensuring that `Vector` uses a copy of the coordinates it receives in the constructor 
+        # Task A: make this test pass by ensuring that `Vector` uses a copy of the coordinates it receives in the constructor
         assert reference[index] != 42.0
 
 
