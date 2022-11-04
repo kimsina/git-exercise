@@ -2,6 +2,7 @@ from __future__ import annotations
 from math import isclose
 from exercise1 import Vector
 
+
 class Point2D:
     def __init__(self, x: float, y: float) -> None:
         self._coordinates = Vector([x, y])
@@ -16,6 +17,12 @@ class Point2D:
 
     def __isub__(self, other: Vector):
         return Point2D((self.x - other[0]), (self.y - other[1]))
+
+    def __iadd__(self, vec: Vector):
+        new_x = self.x + vec._coordinates[0]
+        new_y = self.y + vec._coordinates[1]
+        return Point2D(new_x, new_y)
+
 
 def test_point_construction() -> None:
     point = Point2D(1.0, 42.0)
