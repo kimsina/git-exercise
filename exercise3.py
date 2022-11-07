@@ -29,14 +29,22 @@ class Rectangle:
         # Task A: remove duplication by defining a function
         #         that checks if a value is within an interval
         #         and reuse that here.
-        ll_px = point.x - self._lower_left.x
-        ll_py = point.y - self._lower_left.y
-        return ll_px >= 0 and ll_px <= self._dx \
-            and ll_py >= 0 and ll_py <= self._dy
+        x_check = self.check_intervall(
+            point.x, self._lower_left.x, self._lower_left.x+self._dx)
+        y_check = self.check_intervall(
+            point.y, self._lower_left.y, self._lower_left.y+self._dy)
+
+        return x_check and y_check
+
+    def check_intervall(self, val, lower, upper) -> bool:
+        if lower <= val <= upper:
+            return True
+        else:
+            return False
 
     def _is_idx_on_upper_edge(self, i: int) -> bool:
         return i in [2, 3]
-    
+
     def _is_idx_on_right_edge(self, i: int) -> bool:
         return i in [1, 3]
 
